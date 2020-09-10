@@ -1,0 +1,16 @@
+version: 0.3
+
+phases:
+  pre_build:
+    commands:
+      - $(aws ecr get-login --no-include-email --region us-east-2)
+  build:
+    commands:
+      - docker build -t prueba-ccloud-nodejs:latest
+      - docker tag prueba-ccloud-nodejs:latest 263118722633.dkr.ecr.us-east-2.amazonaws.com/nodes-test:latest
+  post_build:
+    commands:
+      - docker push 263118722633.dkr.ecr.us-east-2.amazonaws.com/nodes-test:latest
+      - printf '[{"name":"PruebaFargaete", "imageUri":"%s"}]' 263118722633.dkr.ecr.us-east-2.amazonaws.com/nodes-test:latest > imagedefinitions.json
+artifacts:
+  files: imagedefinitions.json
