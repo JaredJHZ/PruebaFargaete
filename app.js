@@ -5,6 +5,10 @@ app.get('/', (req, res) => {
     res.send('Prueba compucloud')
 })
 
+app.get('/' , (req, res) => {
+    res.send('Webinar de AWS para developers!')
+})
+
 app.get('/health', (req, res) => {
     res.send('Todo funciona OK!')
 })
