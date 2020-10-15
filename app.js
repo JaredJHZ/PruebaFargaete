@@ -1,10 +1,6 @@
 const express = require('express')
 const app = express()
 
-app.get('/', (req, res) => {
-    res.send('Prueba compucloud')
-})
-
 app.get('/' , (req, res) => {
     res.send('Webinar de AWS para developers!')
 })
